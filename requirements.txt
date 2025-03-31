@@ -1,0 +1,11 @@
+fastapi
+starlette
+python-dotenv
+python-multipart
+httpx
+pandas
+json5
+pdfplumber
+zipfile36
+requests
+uvicorn
