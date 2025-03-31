@@ -54,8 +54,7 @@ def process_zip_file(zip_file_path) -> str:
     try:
         with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
             # Create a temporary directory for zip extraction
-            tmp_dir = os.path.dirname(zip_file_path)
-            extract_dir = os.path.join(tmp_dir,os.path.basename(zip_file_path).split('.')[0])
+            extract_dir = os.path.join("/tmp", os.path.basename(zip_file_path).split('.')[0])
             os.makedirs(extract_dir, exist_ok=True)
 
             # Extract all files
@@ -150,9 +149,8 @@ def execute_python_code(answer: str) -> dict:
     if code_match:
         clean_code = code_match.group(1).strip()
 
-        # Create project-relative tmp directory path
-        tmp_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tmp")
-        os.makedirs(tmp_dir, exist_ok=True)
+        tmp_dir = "/tmp"
+        os.makedirs(tmp_dir, exist_ok=True)  # Ensure tmp directory exists
 
         file_path = os.path.join(tmp_dir, "code.py")
 
